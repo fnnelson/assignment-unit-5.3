@@ -1,23 +1,23 @@
 console.log('***** Music Collection *****')
 
-// Create a variable collection that starts as an empty array.
+// Create a variable collection that starts as an empty array. ✅
 let collection = [];
 
-// Add a function named addToCollection. This function should:
-// Take in the album's title, artist, yearPublished as input parameters
-// Create a new object having the above properties
-// Add the new object to the end of the collection array
-// Return the newly created object
-// Test the addToCollection function:
+// Add a function named addToCollection. ✅ This function should:
+// Take in the album's title, artist, yearPublished as input parameters ✅
+// Create a new object having the above properties ✅
+// Add the new object to the end of the collection array ✅
+// Return the newly created object ✅
+// Test the addToCollection function: ✅
 
 function addToCollection(title, artist, yearPublished) {
-    console.log("adding album to addToCollection:", title, artist, yearPublished); // showing arguments taken in by function
+    console.log("...adding album to addToCollection:", title, artist, yearPublished); // showing arguments taken in by function
     const album = {
         "Title": title,
         "Artist": artist,
         "Year Published": yearPublished
-    } // creating new object using arguments title, artist, yearPublished
-    collection.push(album); // pushing newly created object onto collection array
+    } // creating new object using the 3 arguments - title, artist, yearPublished
+    collection.push(album); // pushing newly created object onto end of the collection array
     return album; // returning newly created object (album) as result of function
 } //end of addToCollection
 
@@ -26,17 +26,44 @@ let testAlbum = addToCollection("Debut Album", "Hot New Band", 2023); // creatin
 console.log("Added to collection:", testAlbum); // logging new album using variable instead of function
 
 collection = [];
-console.log("Clearing collection.  Current collection:", collection);
+console.log("Clearing collection. Current collection:", collection);
 
-// Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
-// Console.log each album as added using the returned value.
-// After all are added, console.log the collection array.
+// Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.) ✅
+// Console.log each album as added using the returned value. ✅
+// After all are added, console.log the collection array. ✅
+
+console.log("-----Adding 6 Albums------");
+
+console.log("Collection before using function:", collection);
+
+let firstAlbum = addToCollection("Jailbreak", "Thin Lizzy", 1976);
+console.log("Added to collection:", firstAlbum);
+
+let secondAlbum = addToCollection("Songs In The Key Of Life", "Stevie Wonder", 1976);
+console.log("Added to collection:", secondAlbum);
+
+let thirdAlbum = addToCollection("It's Album Time", "Todd Terje", 2014);
+console.log("Added to collection:", thirdAlbum);
+
+let fourthAlbum = addToCollection("D", "White Denim", 2011);
+console.log("Added to collection:", fourthAlbum);
+
+let fifthAlbum = addToCollection("The Rise and Fall of Ziggy Stardust and the Spiders from Mars", "David Bowie", 1972);
+console.log("Added to collection:", fifthAlbum);
+
+let sixthAlbum = addToCollection("Nightlife", "Thin Lizzy", 1974);
+console.log("Added to collection:", sixthAlbum);
+
+console.log("Current collection:", collection);
+
 // Add a function named showCollection. This function should:
 
 // Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
 // Console.log the number of items in the array.
 // Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
 // Test the showCollection function.
+
+
 
 // Add a function named findByArtist. This function should:
 
