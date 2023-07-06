@@ -70,10 +70,10 @@ function showCollection(array) {
     console.log("Number of albums in collection:", array.length);
 
     for (let i = 0; i < array.length; i++) {
-        console.log(`${array[i].title.toUpperCase()} by ${array[i].artist.toUpperCase()}, published in ${array[i].yearPublished}.`) 
-        // array[i] indicates which object of the array referenced, array[i].title indicates the title of that object, and toUpperCase makes the whole string upper-case
+        console.log(`${array[i].title.toUpperCase()} by ${array[i].artist.toUpperCase()}, published in ${array[i].yearPublished}.`)
+        // array[i] indicates which object of the array referenced in the loop,  array[i].title indicates the "title" of that object, and toUpperCase makes the whole string upper-case.
     }
-    return array; // the show collection function only SHOWS the title and artist in all-caps, but still returns the same array in the end without changing the collection passed through.  If doing that however, we could create a new variable for the upper-cased versions of the title and artist, (I think?) create a new array variable with those, and return that array.
+    return array; // the show collection function only SHOWS the title and artist in all-caps, but still returns the same array in the end without changing the array of objects passed through.  If doing that however, we could create a new variable for the upper-cased versions of the title and artist, (I think?) create a new array variable with those, and return that new array.
 }
 
 let myNewCollection = showCollection(collection);
@@ -81,8 +81,38 @@ console.log("Presenting my collection:", myNewCollection);
 
 // Add a function named findByArtist. This function should:
 
-// Take in artist (a string) parameter
+// Take in artist (a string) parameter 
 // Create an array to hold any results, empty to start
 // Loop through the collection and add any objects with a matching artist to the array.
 // Return the array with the matching results. If no results are found, return an empty array.
 // Test the findByArtist function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
+
+console.log("**********Searching Artist in Collection**********");
+
+function findByArtist(artist) {
+    let results = [];
+    for (let i = 0; i < collection.length; i++) {  // ...here I'm deciding whether we should have the collection passed through the function (to work with anyone's collection) 🤔
+        if (collection[i].artist === artist) { // going through loop, each iteration will see if artist matches collection[i].artist (key in object), then push that artist (value for that key in object) onto the results array we created
+            results.push(collection[i]);
+        }
+    }
+    return results; // after any results were found, they'll be pushed onto this array, and findByArtist will return only those results into an array
+}
+
+// function findByArtist(anyRecordCollection, artist) {  // trying to make it universal for anyone's collection (array)
+//     let results = [];
+//     for (let i=0; i<anyRecordCollection.length; i++) {  
+//         if (anyRecordCollection[i].artist === artist) {
+
+//         }
+//     }
+// }
+
+console.log("Current collection:", collection);
+
+let searchBillWithers = findByArtist("Bill Withers");
+console.log("Albums in collection by Bill Withers:", searchBillWithers);
+let searchWhiteDenim = findByArtist("White Denim");
+console.log("Albums in collection by White Denim:", searchWhiteDenim);
+let searchThinLizzy = findByArtist("Thin Lizzy");
+console.log("Albums in collection by Thin Lizzy:", searchThinLizzy);
