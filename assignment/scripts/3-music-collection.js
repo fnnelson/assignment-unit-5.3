@@ -13,9 +13,9 @@ let collection = [];
 function addToCollection(title, artist, yearPublished) {
     console.log("...adding album to addToCollection:", title, artist, yearPublished); // showing arguments taken in by function
     const album = {
-        "Title": title,
-        "Artist": artist,
-        "Year Published": yearPublished
+        "title": title,
+        "artist": artist,
+        "yearPublished": yearPublished
     } // creating new object using the 3 arguments - title, artist, yearPublished
     collection.push(album); // pushing newly created object onto end of the collection array
     return album; // returning newly created object (album) as result of function
@@ -32,7 +32,7 @@ console.log("Clearing collection. Current collection:", collection);
 // Console.log each album as added using the returned value. ✅
 // After all are added, console.log the collection array. ✅
 
-console.log("-----Adding 6 Albums------");
+console.log("**********Adding 6 Albums**********");
 
 console.log("Collection before using function:", collection);
 
@@ -56,14 +56,28 @@ console.log("Added to collection:", sixthAlbum);
 
 console.log("Current collection:", collection);
 
-// Add a function named showCollection. This function should:
+// Add a function named showCollection. ✅ This function should:
 
-// Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
-// Console.log the number of items in the array.
-// Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
-// Test the showCollection function.
+// Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.) ✅
+// Console.log the number of items in the array. ✅
+// Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR. ✅
+// Test the showCollection function. ✅
 
+console.log("**********Showing Collection**********");
 
+function showCollection(array) {
+    console.log("...array in showCollection:", array); // showing which array is passing through this function
+    console.log("Number of albums in collection:", array.length);
+
+    for (let i = 0; i < array.length; i++) {
+        console.log(`${array[i].title.toUpperCase()} by ${array[i].artist.toUpperCase()}, published in ${array[i].yearPublished}.`) 
+        // array[i] indicates which object of the array referenced, array[i].title indicates the title of that object, and toUpperCase makes the whole string upper-case
+    }
+    return array; // the show collection function only SHOWS the title and artist in all-caps, but still returns the same array in the end without changing the collection passed through.  If doing that however, we could create a new variable for the upper-cased versions of the title and artist, (I think?) create a new array variable with those, and return that array.
+}
+
+let myNewCollection = showCollection(collection);
+console.log("Presenting my collection:", myNewCollection);
 
 // Add a function named findByArtist. This function should:
 
