@@ -79,40 +79,68 @@ function showCollection(array) {
 let myNewCollection = showCollection(collection);
 console.log("Presenting my collection:", myNewCollection);
 
-// Add a function named findByArtist. This function should:
-
-// Take in artist (a string) parameter 
-// Create an array to hold any results, empty to start
-// Loop through the collection and add any objects with a matching artist to the array.
-// Return the array with the matching results. If no results are found, return an empty array.
-// Test the findByArtist function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
-
 console.log("**********Searching Artist in Collection**********");
 
-function findByArtist(artist) {
+// Add a function named findByArtist. This function should:
+
+// Take in artist (a string) parameter ✅
+// Create an array to hold any results, empty to start ✅
+// Loop through the collection and add any objects with a matching artist to the array. ✅
+// Return the array with the matching results. If no results are found, return an empty array. ✅
+// Test the findByArtist function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found. ✅
+
+// function that works with my collection, but no others
+
+// function findByArtist(artist) {
+//     let results = [];
+//     for (let i = 0; i < collection.length; i++) {  // ...here I'm deciding whether we should also have a collection passed through the function (to work with anyone's collection) 🤔
+//         if (collection[i].artist === artist) { 
+//             results.push(collection[i]);
+//         }
+//     }
+//     return results; 
+// }
+
+// let searchBillWithers = findByArtist("Bill Withers");
+// console.log("Albums in collection by Bill Withers:", searchBillWithers);
+// let searchWhiteDenim = findByArtist("White Denim");
+// console.log("Albums in collection by White Denim:", searchWhiteDenim);
+// let searchThinLizzy = findByArtist("Thin Lizzy");
+// console.log("Albums in collection by Thin Lizzy:", searchThinLizzy);
+
+function findByArtist(anyRecordCollection, artist) {  // trying to make it universal for anyone's collection (array)
     let results = [];
-    for (let i = 0; i < collection.length; i++) {  // ...here I'm deciding whether we should have the collection passed through the function (to work with anyone's collection) 🤔
-        if (collection[i].artist === artist) { // going through loop, each iteration will see if artist matches collection[i].artist (key in object), then push that artist (value for that key in object) onto the results array we created
-            results.push(collection[i]);
+    for (let i = 0; i < anyRecordCollection.length; i++) { 
+        // going through loop, each iteration will see if artist matches collection[i].artist (key in object), then push that artist (value for that key in object) onto the results array we created
+        if (anyRecordCollection[i].artist === artist) {
+            results.push(anyRecordCollection[i]);
         }
     }
     return results; // after any results were found, they'll be pushed onto this array, and findByArtist will return only those results into an array
 }
 
-// function findByArtist(anyRecordCollection, artist) {  // trying to make it universal for anyone's collection (array)
-//     let results = [];
-//     for (let i=0; i<anyRecordCollection.length; i++) {  
-//         if (anyRecordCollection[i].artist === artist) {
-
-//         }
-//     }
-// }
-
 console.log("Current collection:", collection);
 
-let searchBillWithers = findByArtist("Bill Withers");
+let searchBillWithers = findByArtist(collection, "Bill Withers");
 console.log("Albums in collection by Bill Withers:", searchBillWithers);
-let searchWhiteDenim = findByArtist("White Denim");
+let searchWhiteDenim = findByArtist(collection, "White Denim");
 console.log("Albums in collection by White Denim:", searchWhiteDenim);
-let searchThinLizzy = findByArtist("Thin Lizzy");
+let searchThinLizzy = findByArtist(collection, "Thin Lizzy");
 console.log("Albums in collection by Thin Lizzy:", searchThinLizzy);
+
+let otherCollection = [
+    { title: 'Merriweather Post Pavilion', artist: 'Animal Collective', yearPublished: 2009 },
+    { title: 'OK Computer', artist: 'Radiohead', yearPublished: 1997 },
+    { title: 'All Eyez On Me', artist: '2Pac', yearPublished: 1996 },
+    { title: 'Nomad', artist: 'Bombino', yearPublished: 2013 },
+    { title: 'In Rainbows', artist: 'Radiohead', yearPublished: 2007 },
+    { title: 'Homework', artist: 'Daft Punk', yearPublished: 1997 },
+    { title: 'Fancy Footwork', artist: 'Chromeo', yearPublished: 2007 }
+];
+
+console.log("Testing with another person's collection:", otherCollection);
+
+searchThinLizzy = findByArtist(otherCollection, "Thin Lizzy");
+console.log("Albums in other collection by Thin Lizzy:", searchThinLizzy);
+let searchRadiohead = findByArtist(otherCollection, "Radiohead");
+console.log("Albums in other collection by Radiohead:", searchRadiohead);
