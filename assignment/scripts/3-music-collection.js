@@ -185,7 +185,7 @@ let aRayArray = [
 function search(objectSearch) {
     console.log("...in the object search function:", objectSearch);
     let results = []; // making new array for search results
-    if (objectSearch.artist == false || objectSearch.year == false) { // if either input isn't in the object, will return the full array
+    if (!objectSearch || !objectSearch.artist || !objectSearch.year) { // if either input isn't in the object, will return the full array. Tried over and over trying to get artist or year false, but worked when I used ! in front of the object.attribute.  For empty search, had to add !objectSearch as well to get it to work!
         return aRayArray;
     } else {
         console.log("...didn't meet if statement, moving to else"); // had to use this since I wasn't getting the else part right
@@ -205,8 +205,10 @@ let raySearchTwo = search({ artist: 'Ray J', year: '1957' });
 console.log("Ray Search Two:", raySearchTwo);
 let raySearchThree = search({ artist: 'Ray Charles', year: '1958' });
 console.log("Ray Search Three:", raySearchThree);
-let raySearchFour = search({ artist: 'Ray Charles', year: '1957' });
-console.log("Ray Search Four (should return full array):", raySearchFour);  // still need to fix 🤔
+let raySearchFour = search('Ray Charles');
+console.log("Ray Search Four (should return full array):", raySearchFour);
+let raySearchFive = search();
+console.log("Ray Search Five (should return full array):", raySearchFive);
 
 
 // Update the addToCollection function to also take an input parameter for the array of tracks.
@@ -220,3 +222,4 @@ console.log("Ray Search Four (should return full array):", raySearchFour);  // s
 //     TITLE by ARTIST, published in YEAR:
 //     1. NAME: DURATION
 //     2. NAME: DURATION
+
