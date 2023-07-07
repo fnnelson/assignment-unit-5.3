@@ -110,7 +110,7 @@ console.log("**********Searching Artist in Collection**********");
 
 function findByArtist(anyRecordCollection, artist) {  // trying to make it universal for anyone's collection (array)
     let results = [];
-    for (let i = 0; i < anyRecordCollection.length; i++) { 
+    for (let i = 0; i < anyRecordCollection.length; i++) {
         // going through loop, each iteration will see if artist matches collection[i].artist (key in object), then push that artist (value for that key in object) onto the results array we created
         if (anyRecordCollection[i].artist === artist) {
             results.push(anyRecordCollection[i]);
@@ -144,3 +144,79 @@ searchThinLizzy = findByArtist(otherCollection, "Thin Lizzy");
 console.log("Albums in other collection by Thin Lizzy:", searchThinLizzy);
 let searchRadiohead = findByArtist(otherCollection, "Radiohead");
 console.log("Albums in other collection by Radiohead:", searchRadiohead);
+
+console.log("**********Stretch Goals**********");
+
+// Stretch goals
+// Create a function called search. This function should:
+
+// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
+// { artist: 'Ray Charles', year: 1957 }
+// The returned output from search should meet these requirements:
+// Return a new array of all items in the collection matching all of the search criteria.
+// If no results are found, return an empty array.
+// If there is no search object or an empty search object provided as input, then return all albums in the collection.
+// Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
+
+
+let aRayArray = [
+    { artist: 'Ray Charles', year: 1957 },
+    { artist: 'Ray Charles', year: 1958 },
+    { artist: 'Ray Charles', year: 1958 },
+    { artist: 'Ray Charles', year: 1961 },
+    { artist: 'Ray J', year: 2005 },
+    { artist: 'Ray Lamontagne', year: 2005 },
+]
+
+// function search(collection, artist, year) {
+//     let results = [];  
+//     if (artist != true || year != true) {
+//         return collection;
+//     } else {
+//         for (let i = 0; i < collection.length; i++) {  // loop to go through each index of array
+//             if (collection[i].artist === artist && collection[i].year === year) {  // both artist and year need to match
+//                 results.push(collection[i]);  // since we want the whole object added to the results array
+//             }
+//         }
+//     }
+//     return results;
+// }
+
+function search(objectSearch) {
+    console.log("...in the object search function:", objectSearch);
+    let results = []; // making new array for search results
+    if (objectSearch.artist == false || objectSearch.year == false) { // if either input isn't in the object, will return the full array
+        return aRayArray;
+    } else {
+        console.log("...didn't meet if statement, moving to else"); // had to use this since I wasn't getting the else part right
+        for (let i = 0; i < aRayArray.length; i++) { // loop to go through each index of array
+            if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) { // both artist and year in the collection need to match the search item's (object's) artist and year parameters
+                results.push(objectSearch); // since we want the whole object added to the results array
+            }
+        }
+    }
+    return results;
+}
+
+console.log("A Ray rray:", aRayArray);
+let raySearchOne = search({ artist: 'Ray Charles', year: '1957' });
+console.log("Ray Search One:", raySearchOne);
+let raySearchTwo = search({ artist: 'Ray J', year: '1957' });
+console.log("Ray Search Two:", raySearchTwo);
+let raySearchThree = search({ artist: 'Ray Charles', year: '1958' });
+console.log("Ray Search Three:", raySearchThree);
+let raySearchFour = search({ artist: 'Ray Charles', year: '1957' });
+console.log("Ray Search Four (should return full array):", raySearchFour);  // still need to fix 🤔
+
+
+// Update the addToCollection function to also take an input parameter for the array of tracks.
+// Update search to allow a trackName search criteria.
+// IF the search object has a trackName property, only search for that, ignoring any artist or year properties.
+// Update the showCollection function to display the list of tracks for each album with its name and duration.
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
+//     3. NAME: DURATION
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
