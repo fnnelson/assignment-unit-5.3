@@ -65,6 +65,15 @@ console.log("Current collection:", collection);
 // Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR. ✅
 // Test the showCollection function. ✅
 
+// Stretch: Update the showCollection function to display the list of tracks for each album with its name and duration. ✅
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
+//     3. NAME: DURATION
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
+
 console.log("**********Showing Collection**********");
 
 function showCollection(array) {
@@ -72,8 +81,13 @@ function showCollection(array) {
     console.log("Number of albums in collection:", array.length);
 
     for (let i = 0; i < array.length; i++) {
-        console.log(`${array[i].title.toUpperCase()} by ${array[i].artist.toUpperCase()}, published in ${array[i].yearPublished}.`)
+        console.log(`${array[i].title.toUpperCase()} by ${array[i].artist.toUpperCase()}, published in ${array[i].yearPublished}:`);
         // array[i] indicates which object of the array referenced in the loop,  array[i].title indicates the "title" of that object, and toUpperCase makes the whole string upper-case.
+        for (let j = 0; j < array[i].trackList.length; j++) {
+            console.log(`${j + 1}. ${array[i].trackList[j][0].toUpperCase()}: ${array[i].trackList[j][1]}`);
+        }
+        // realized I need a nested loop to go through the list of each albums' tracks, so i assigned j for the nested loop.  j+1 to give the correct #, array[i] referencing the first loop's object and trackList[j] referencing the second loop's track in the respective array.  Honestly surprised it worked out after a few tries, but going back to every scenario for i and j, it seems to make sense as to what gets logged each loop.
+
     }
     return array; // the show collection function only SHOWS the title and artist in all-caps, but still returns the same array in the end without changing the array of objects passed through.  If doing that however, we could create a new variable for the upper-cased versions of the title and artist, (I think?) create a new array variable with those, and return that new array.
 }
@@ -183,24 +197,7 @@ let aRayArray = [
 //     return results;
 // }
 
-// function search(objectSearch) {
-//     console.log("...in the object search function:", objectSearch);
-//     let results = []; // making new array for search results
-//     if (!objectSearch || !objectSearch.artist || !objectSearch.year) { // if either input isn't in the object, will return the full array. Tried over and over trying to get artist or year false, but worked when I used ! in front of the object.attribute.  For empty search, had to add !objectSearch as well to get it to work!
-//         return aRayArray;
-//     } else {
-//         console.log("...didn't meet if statement, moving to else"); // had to use this since I wasn't getting the else part right
-//         for (let i = 0; i < aRayArray.length; i++) { // loop to go through each index of array
-//             if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) { // both artist and year in the collection need to match the search item's (object's) artist and year parameters
-//                 results.push(objectSearch); // since we want the whole object added to the results array
-//             }
-//         }
-//     }
-//     return results;
-// }
-
-//experimenting with objectSearch and trackSearch
-function search(objectSearch, trackSearch) {
+function search(objectSearch) {
     console.log("...in the object search function:", objectSearch);
     let results = []; // making new array for search results
     if (!objectSearch || !objectSearch.artist || !objectSearch.year) { // if either input isn't in the object, will return the full array. Tried over and over trying to get artist or year false, but worked when I used ! in front of the object.attribute.  For empty search, had to add !objectSearch as well to get it to work!
@@ -216,6 +213,29 @@ function search(objectSearch, trackSearch) {
     return results;
 }
 
+// //experimenting with objectSearch - trying to make it so if doing search({object}), it works, and if search('track name'), it works too... but cannot figure out how to get it to notice if a track matches one in the object, and how to allow for both search items.
+
+// function search(objectSearch) {
+//     console.log("...in the object search function:", objectSearch);
+//     let results = [];
+//     for (let i = 0; i < objectSearch.trackList.length; i++) {
+//         if (objectSearch.trackList[i] == objectSearch) {
+//             results.push(objectSearch);
+//         }
+//     }
+//     if (!objectSearch || !objectSearch.artist || !objectSearch.year) {
+//         return aRayArray;
+//     } else {
+//         console.log("...didn't meet if statement, moving to else");
+//         for (let i = 0; i < aRayArray.length; i++) {
+//             if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) {
+//                 results.push(objectSearch);
+//             }
+//         }
+//     }
+//     return results;
+// }
+
 
 console.log("A Ray Array:", aRayArray);
 let raySearchOne = search({ artist: 'Ray Charles', year: '1957' });
@@ -228,6 +248,10 @@ let raySearchFour = search('Ray Charles');
 console.log("Ray Search Four (should return full array):", raySearchFour);
 let raySearchFive = search();
 console.log("Ray Search Five (should return full array):", raySearchFive);
+let raySearchSix = search('Mess Around');
+console.log("Ray Search Five (should return objects with that song):", raySearchSix);
+let raySearchSeven = search('Georgia On My Mind');
+console.log("Ray Search Five (should return full array):", raySearchSeven);
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
