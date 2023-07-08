@@ -197,47 +197,51 @@ let aRayArray = [
 //     return results;
 // }
 
-// function search(objectSearch) {
-//     console.log("...in the object search function:", objectSearch);
-//     let results = []; // making new array for search results
-//     if (!objectSearch || !objectSearch.artist || !objectSearch.year) { // if either input isn't in the object, will return the full array. Tried over and over trying to get artist or year false, but worked when I used ! in front of the object.attribute.  For empty search, had to add !objectSearch as well to get it to work!
-//         return aRayArray;
-//     } else {
-//         console.log("...didn't meet if statement, moving to else"); // had to use this since I wasn't getting the else part right
-//         for (let i = 0; i < aRayArray.length; i++) { // loop to go through each index of array
-//             if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) { // both artist and year in the collection need to match the search item's (object's) artist and year parameters
-//                 results.push(objectSearch); // since we want the whole object added to the results array
-//             }
-//         }
-//     }
-//     return results;
-// }
-
-// // below I'm experimenting with objectSearch for the stretch goals - 
-// // I can't tell how to get it to notice if there's a track name added to the object, and how to define that an item of the trackList array are a trackName
-
 function search(objectSearch) {
     console.log("...in the object search function:", objectSearch);
-    let results = [];
-    if (objectSearch.hasOwnProperty(trackList)) {
-        for (let i = 0; i < objectSearch.trackList.length; i++) {
-            if (objectSearch.trackList[i] == objectSearch) {
-                results.push(objectSearch);
-            }
-        }
-        return results;
-    } else if (!objectSearch || !objectSearch.artist || !objectSearch.year) {
+    let results = []; // making new array for search results
+    if (!objectSearch || !objectSearch.artist || !objectSearch.year) { // if either input isn't in the object, will return the full array. Tried over and over trying to get artist or year false, but worked when I used ! in front of the object.attribute.  For empty search, had to add !objectSearch as well to get it to work!
         return aRayArray;
     } else {
-        console.log("...didn't meet if statement, moving to else");
-        for (let i = 0; i < aRayArray.length; i++) {
-            if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) {
-                results.push(objectSearch);
+        console.log("...didn't meet if statement, moving to else"); // had to use this since I wasn't getting the else part right
+        for (let i = 0; i < aRayArray.length; i++) { // loop to go through each index of array
+            if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) { // both artist and year in the collection need to match the search item's (object's) artist and year parameters
+                results.push(objectSearch); // since we want the whole object added to the results array
             }
         }
     }
     return results;
 }
+
+
+// Update search to allow a trackName search criteria.
+// IF the search object has a trackName property, only search for that, ignoring any artist or year properties. ❌
+
+// // below I'm experimenting with objectSearch for the stretch goals - 
+// // I can't tell how to get it to notice if there's a track name added to the object, and how to define that an item of the trackList array are a trackName if that's necessary
+
+// function search(objectSearch) {
+//     console.log("...in the object search function:", objectSearch);
+//     let results = [];
+//     if (objectSearch.hasOwnProperty(trackList)) {
+//         for (let i = 0; i < objectSearch.trackList.length; i++) {
+//             if (objectSearch.trackList[i] == objectSearch) {
+//                 results.push(objectSearch);
+//             }
+//         }
+//         return results;
+//     } else if (!objectSearch || !objectSearch.artist || !objectSearch.year) {
+//         return aRayArray;
+//     } else {
+//         console.log("...didn't meet if statement, moving to else");
+//         for (let i = 0; i < aRayArray.length; i++) {
+//             if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) {
+//                 results.push(objectSearch);
+//             }
+//         }
+//     }
+//     return results;
+// }
 
 
 console.log("A Ray Array:", aRayArray);
@@ -252,11 +256,11 @@ console.log("Ray Search Four (should return full array):", raySearchFour);
 let raySearchFive = search();
 console.log("Ray Search Five (should return full array):", raySearchFive);
 
-//These are for the Stretch goal for the search() function
-let raySearchSix = search({ artist: 'Ray Charles', year: '1957', trackList: 'Mess Around' });
-console.log("Ray Search Four (should return results):", raySearchSix);
-let raySearchSeven = search({ artist: 'Raekwon', year: '1994', trackList: 'Ice Cream' });
-console.log("Ray Search Five (should return full array):", raySearchSeven);
+// //These are for the Stretch goal for the search() function
+// let raySearchSix = search({ artist: 'Ray Charles', year: '1957', trackList: 'Mess Around' });
+// console.log("Ray Search Four (should return results):", raySearchSix);
+// let raySearchSeven = search({ artist: 'Raekwon', year: '1994', trackList: 'Ice Cream' });
+// console.log("Ray Search Five (should return full array):", raySearchSeven);
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
