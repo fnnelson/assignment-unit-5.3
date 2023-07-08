@@ -248,10 +248,12 @@ let raySearchFour = search('Ray Charles');
 console.log("Ray Search Four (should return full array):", raySearchFour);
 let raySearchFive = search();
 console.log("Ray Search Five (should return full array):", raySearchFive);
-let raySearchSix = search('Mess Around');
-console.log("Ray Search Five (should return objects with that song):", raySearchSix);
-let raySearchSeven = search('Georgia On My Mind');
-console.log("Ray Search Five (should return full array):", raySearchSeven);
+
+// //These are for the Stretch goal for the search() function
+// let raySearchSix = search('Mess Around');
+// console.log("Ray Search Five (should return objects with that song):", raySearchSix);
+// let raySearchSeven = search('Georgia On My Mind');
+// console.log("Ray Search Five (should return full array):", raySearchSeven);
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
