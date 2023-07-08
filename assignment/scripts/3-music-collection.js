@@ -9,20 +9,22 @@ let collection = [];
 // Add the new object to the end of the collection array ✅
 // Return the newly created object ✅
 // Test the addToCollection function: ✅
+// Stretch: Update the addToCollection function to also take an input parameter for the array of tracks.
 
-function addToCollection(title, artist, yearPublished) {
-    console.log("...adding album to addToCollection:", title, artist, yearPublished); // showing arguments taken in by function
+function addToCollection(title, artist, yearPublished, trackList) {
+    console.log("...adding album to addToCollection:", title, artist, yearPublished, trackList); // showing arguments taken in by function
     const album = {
         "title": title,
         "artist": artist,
-        "yearPublished": yearPublished
-    } // creating new object using the 3 arguments - title, artist, yearPublished
+        "yearPublished": yearPublished,
+        "trackList": trackList
+    } // creating new object using the 3 (now 4) arguments - title, artist, yearPublished, trackList
     collection.push(album); // pushing newly created object onto end of the collection array
     return album; // returning newly created object (album) as result of function
 } //end of addToCollection
 
 console.log("Collection before using function:", collection);
-let testAlbum = addToCollection("Debut Album", "Hot New Band", 2023); // creating new variable for album added
+let testAlbum = addToCollection("Debut Album", "Hot New Band", 2023, [["Song 1", "1:30"], ["Song 2", "2:20"], ["Song 3", "8:20"], ["Song 4", "5:15"]]); // creating new variable for album added
 console.log("Added to collection:", testAlbum); // logging new album using variable instead of function
 
 collection = [];
@@ -36,22 +38,22 @@ console.log("**********Adding 6 Albums**********");
 
 console.log("Collection before using function:", collection);
 
-let firstAlbum = addToCollection("Jailbreak", "Thin Lizzy", 1976);
+let firstAlbum = addToCollection("Jailbreak", "Thin Lizzy", 1976, [["Jailbreak", "4:00"], ["Angel from the Coast", "3:04"], ["Running Back", "3:12"], ["Romeo and the Lonely Girl", "3:54"], ["Warriors", "4:08"], ["The Boys Are Back In Town", "4:26"], ["Fight or Fall", "3:45"], ["Cowboy Song", "5:14"], ["Emerald", "4:03"]]);
 console.log("Added to collection:", firstAlbum);
 
-let secondAlbum = addToCollection("Songs In The Key Of Life", "Stevie Wonder", 1976);
+let secondAlbum = addToCollection("Songs In The Key Of Life", "Stevie Wonder", 1976, [["Love's in Need of Love Today", "7:05"], ["Sir Duke", "3:52"], ["I Wish", "4:12"], ["Isn't She Lovely", "6:34"], ["As", "7:08"], ["Another Star", "8:28"]]);
 console.log("Added to collection:", secondAlbum);
 
-let thirdAlbum = addToCollection("It's Album Time", "Todd Terje", 2014);
+let thirdAlbum = addToCollection("It's Album Time", "Todd Terje", 2014, [["Intro (It's Album Time)", "1:40"], ["Leisure Suit Preben", "4:20"], ["Preben Goes to Acapulco", "4:35"], ["Delorean Dynamite", "6:45"], ["Johnny and Mary", "6:32"], ["Alfonso Muskedunder", "3:24"], ["Inspector Norse", "6:59"]]);
 console.log("Added to collection:", thirdAlbum);
 
-let fourthAlbum = addToCollection("D", "White Denim", 2011);
+let fourthAlbum = addToCollection("D", "White Denim", 2011, [["It's Him!", "3:18"], ["Back At The Farm", "3:58"], ["Street Joy", "3:36"], ["Anvil Everything", "3:59"], ["Bess St.", "3:39"], ["Is and Is and Is", "3:45"], ["Keys", "4:02"]]);
 console.log("Added to collection:", fourthAlbum);
 
-let fifthAlbum = addToCollection("The Rise and Fall of Ziggy Stardust and the Spiders from Mars", "David Bowie", 1972);
+let fifthAlbum = addToCollection("The Rise and Fall of Ziggy Stardust and the Spiders from Mars", "David Bowie", 1972, [["Five Years", "4:43"], ["Moonage Daydream", "4:39"], ["Starman", "4:14"], ["Ziggy Stardust", "3:13"], ["Suffragette City", "3:278"], ["Rock 'n' Roll Suicide", "2:58"]]);
 console.log("Added to collection:", fifthAlbum);
 
-let sixthAlbum = addToCollection("Nightlife", "Thin Lizzy", 1974);
+let sixthAlbum = addToCollection("Nightlife", "Thin Lizzy", 1974, [["She Knows", "5:13"], ["Night Life", "3:57"], ["Still In Love With You", "5:40"], ["Showdown", "4:32"], ["Banshee", "1:27"], ["Dear Heart", "4:35"]]);
 console.log("Added to collection:", sixthAlbum);
 
 console.log("Current collection:", collection);
@@ -151,21 +153,20 @@ console.log("**********Stretch Goals**********");
 // Create a function called search. This function should:
 
 // Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
-// { artist: 'Ray Charles', year: 1957 }
+// { artist: 'Ray Charles', year: 1957 } ✅
 // The returned output from search should meet these requirements:
-// Return a new array of all items in the collection matching all of the search criteria.
-// If no results are found, return an empty array.
-// If there is no search object or an empty search object provided as input, then return all albums in the collection.
-// Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
+// Return a new array of all items in the collection matching all of the search criteria. ✅
+// If no results are found, return an empty array. ✅
+// If there is no search object or an empty search object provided as input, then return all albums in the collection. ✅
 
 
 let aRayArray = [
-    { artist: 'Ray Charles', year: 1957 },
-    { artist: 'Ray Charles', year: 1958 },
-    { artist: 'Ray Charles', year: 1958 },
-    { artist: 'Ray Charles', year: 1961 },
-    { artist: 'Ray J', year: 2005 },
-    { artist: 'Ray Lamontagne', year: 2005 },
+    { artist: 'Ray Charles', year: 1957, trackList: ['Drown in My Own Tears', 'Hallelujah, I Love Her So', 'Mess Around', "I've Got a Woman"] },
+    { artist: 'Ray Charles', year: 1958, trackList: ['The Right Time', 'Mess Around', 'Hot Rod'] },
+    { artist: 'Ray Charles', year: 1958, trackList: ['What Would I Do Without You', 'Lonely Avenue', 'Heartbreaker'] },
+    { artist: 'Ray Charles', year: 1961, trackList: ['The Genius After Hours', 'Joy Rid', 'Music, Music, Music'] },
+    { artist: 'Ray J', year: 2005, trackList: ['One Wish', 'Quit Actin', 'In Tha Mood'] },
+    { artist: 'Ray Lamontagne', year: 2005, trackList: ['Trouble', 'Burn', 'Jolene'] },
 ]
 
 // function search(collection, artist, year) {
@@ -182,7 +183,24 @@ let aRayArray = [
 //     return results;
 // }
 
-function search(objectSearch) {
+// function search(objectSearch) {
+//     console.log("...in the object search function:", objectSearch);
+//     let results = []; // making new array for search results
+//     if (!objectSearch || !objectSearch.artist || !objectSearch.year) { // if either input isn't in the object, will return the full array. Tried over and over trying to get artist or year false, but worked when I used ! in front of the object.attribute.  For empty search, had to add !objectSearch as well to get it to work!
+//         return aRayArray;
+//     } else {
+//         console.log("...didn't meet if statement, moving to else"); // had to use this since I wasn't getting the else part right
+//         for (let i = 0; i < aRayArray.length; i++) { // loop to go through each index of array
+//             if (aRayArray[i].artist == objectSearch.artist && aRayArray[i].year == objectSearch.year) { // both artist and year in the collection need to match the search item's (object's) artist and year parameters
+//                 results.push(objectSearch); // since we want the whole object added to the results array
+//             }
+//         }
+//     }
+//     return results;
+// }
+
+//experimenting with objectSearch and trackSearch
+function search(objectSearch, trackSearch) {
     console.log("...in the object search function:", objectSearch);
     let results = []; // making new array for search results
     if (!objectSearch || !objectSearch.artist || !objectSearch.year) { // if either input isn't in the object, will return the full array. Tried over and over trying to get artist or year false, but worked when I used ! in front of the object.attribute.  For empty search, had to add !objectSearch as well to get it to work!
@@ -198,7 +216,8 @@ function search(objectSearch) {
     return results;
 }
 
-console.log("A Ray rray:", aRayArray);
+
+console.log("A Ray Array:", aRayArray);
 let raySearchOne = search({ artist: 'Ray Charles', year: '1957' });
 console.log("Ray Search One:", raySearchOne);
 let raySearchTwo = search({ artist: 'Ray J', year: '1957' });
@@ -211,15 +230,16 @@ let raySearchFive = search();
 console.log("Ray Search Five (should return full array):", raySearchFive);
 
 
-// Update the addToCollection function to also take an input parameter for the array of tracks.
-// Update search to allow a trackName search criteria.
-// IF the search object has a trackName property, only search for that, ignoring any artist or year properties.
-// Update the showCollection function to display the list of tracks for each album with its name and duration.
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
-//     3. NAME: DURATION
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
+// Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
+    // Update the addToCollection function to also take an input parameter for the array of tracks.
+    // Update search to allow a trackName search criteria.
+    // IF the search object has a trackName property, only search for that, ignoring any artist or year properties.
+    // Update the showCollection function to display the list of tracks for each album with its name and duration.
+    //     TITLE by ARTIST, published in YEAR:
+    //     1. NAME: DURATION
+    //     2. NAME: DURATION
+    //     3. NAME: DURATION
+    //     TITLE by ARTIST, published in YEAR:
+    //     1. NAME: DURATION
+    //     2. NAME: DURATION
 
